@@ -1,0 +1,30 @@
+{
+  "name": "solana-crypto",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [],
+  "scripts": {
+    "test": "standard && brittle test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukks/solana-crypto.git"
+  },
+  "author": "Lucas Barrena (LuKks)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lukks/solana-crypto/issues"
+  },
+  "homepage": "https://github.com/lukks/solana-crypto#readme",
+  "devDependencies": {
+    "brittle": "^3.3.2",
+    "standard": "^17.1.0"
+  },
+  "dependencies": {
+    "@noble/ed25519": "^2.2.3",
+    "@noble/hashes": "^1.7.1",
+    "bs58": "^6.0.0",
+    "solana-public-key": "^0.0.3"
+  }
+}

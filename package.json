@@ -25,6 +25,6 @@
     "@noble/ed25519": "^2.2.3",
     "@noble/hashes": "^1.7.1",
     "bs58": "^6.0.0",
-    "solana-public-key": "^0.0.3"
+    "solana-public-key": "^0.3.0"
   }
 }

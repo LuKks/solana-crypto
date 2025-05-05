@@ -7,9 +7,8 @@ const { sha512 } = require('@noble/hashes/sha512')
 ed25519.etc.sha512Sync = sha512
 
 exports.keyPair = function (seed) {
-  if (seed && typeof seed === 'string') {
-    seed = Buffer.from(bs58.decode(seed))
-  }
+  if (seed instanceof Uint8Array) seed = Buffer.from(seed)
+  if (seed && typeof seed === 'string') seed = Buffer.from(bs58.decode(seed))
 
   if (seed && seed.byteLength === 32) {
     const privateScalar = seed

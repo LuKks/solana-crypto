@@ -1,8 +1,8 @@
-const crypto = require('crypto')
-const { default: bs58 } = require('bs58')
 const ed25519 = require('@noble/ed25519')
-const PublicKey = require('solana-public-key')
+const { sha256 } = require('@noble/hashes/sha256')
 const { sha512 } = require('@noble/hashes/sha512')
+const PublicKey = require('solana-public-key')
+const { default: bs58 } = require('bs58')
 
 ed25519.etc.sha512Sync = sha512
 
@@ -71,7 +71,25 @@ exports.hash = function (buffer) {
     buffer = Buffer.concat(buffer)
   }
 
-  return crypto.createHash('sha256').update(buffer).digest()
+  return Buffer.from(sha256(buffer))
+}
+
+exports.sign = function (message, secretKey) {
+  if (Buffer.isBuffer(secretKey)) {
+    secretKey = new Uint8Array(secretKey)
+  }
+
+  const signature = ed25519.sign(message, secretKey.slice(0, 32))
+
+  return Buffer.from(signature)
+}
+
+exports.verify = function (signature, message, publicKey) {
+  if (Buffer.isBuffer(publicKey)) {
+    publicKey = new Uint8Array(publicKey)
+  }
+
+  return ed25519.verify(signature, message, publicKey)
 }
 
 // Backwards compat

@@ -1,7 +1,7 @@
 {
   "name": "solana-crypto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cryptography for Solana",
   "main": "index.js",
   "files": [],
   "scripts": {
@@ -25,6 +25,6 @@
     "@noble/ed25519": "^2.2.3",
     "@noble/hashes": "^1.7.1",
     "bs58": "^6.0.0",
-    "solana-public-key": "^0.3.0"
+    "solana-public-key": "^1.0.0"
   }
 }

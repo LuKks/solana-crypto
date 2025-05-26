@@ -2,7 +2,7 @@ const ed25519 = require('@noble/ed25519')
 const { sha256 } = require('@noble/hashes/sha256')
 const { sha512 } = require('@noble/hashes/sha512')
 const PublicKey = require('solana-public-key')
-const { default: bs58 } = require('bs58')
+const bs58 = maybeDefaultModule(require('bs58'))
 
 ed25519.etc.sha512Sync = sha512
 
@@ -105,4 +105,8 @@ exports.Keypair = class Keypair {
   get secretKey () {
     return new Uint8Array(this._keyPair.secretKey)
   }
+}
+
+function maybeDefaultModule (mod) {
+  return mod.default ? mod.default : mod
 }

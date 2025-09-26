@@ -1,10 +1,7 @@
-const ed25519 = require('@noble/ed25519')
+const { ed25519 } = require('@noble/curves/ed25519.js')
 const { sha256 } = require('@noble/hashes/sha256')
-const { sha512 } = require('@noble/hashes/sha512')
 const PublicKey = require('solana-public-key')
 const bs58 = maybeDefaultModule(require('bs58'))
-
-ed25519.etc.sha512Sync = sha512
 
 exports.keyPair = function (seed) {
   if (seed instanceof Uint8Array) seed = Buffer.from(seed)
